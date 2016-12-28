@@ -3,10 +3,12 @@
 	"Description": "Hello World! example",
 	"Parameters": {
 		"VPC": {
+			"Default": "vpc-1e298579",
 			"Description": "The default VPC",
 			"Type": "AWS::EC2::VPC::Id"
 		},
 		"Subnet": {
+			"Default": "subnet-d56a8d9c",
 			"Description": "A public subnet from default VPC.",
 			"Type": "AWS::EC2::Subnet::Id"
 		}
@@ -22,7 +24,7 @@
 			"us-east-1": {"AMI": "ami-60b6c60a"},
 			"sa-east-1": {"AMI": "ami-6817af04"},
 			"us-west-1": {"AMI": "ami-d5ea86b5"},
-			"us-west-2": {"AMI": "ami-f0091d91"}
+			"us-west-2": {"AMI": "ami-1b3b462b"}
 		}
 	},
 	"Resources": {
