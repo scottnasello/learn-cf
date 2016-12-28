@@ -32,7 +32,7 @@
 			"Type": "AWS::EC2::Instance",
 			"Properties": {
 				"ImageId": {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]},
-				"InstanceType": "t2.micro",
+				"InstanceType": "t1.micro",
 				"NetworkInterfaces": [{
 					"AssociatePublicIpAddress": "true",
 					"DeviceIndex": "0",
