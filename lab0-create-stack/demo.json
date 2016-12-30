@@ -3,12 +3,12 @@
 	"Description": "Hello World! example",
 	"Parameters": {
 		"VPC": {
-			"Default": "vpc-1e298579",
+			"Default": "vpc-22d27c45",
 			"Description": "The default VPC",
 			"Type": "AWS::EC2::VPC::Id"
 		},
 		"Subnet": {
-			"Default": "subnet-d56a8d9c",
+			"Default": "subnet-f68c6dbf",
 			"Description": "A public subnet from default VPC.",
 			"Type": "AWS::EC2::Subnet::Id"
 		}
