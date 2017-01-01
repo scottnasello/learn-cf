@@ -99,7 +99,42 @@
 					"service httpd start\n"
 				]]}}
 			}
-		},				
+		},
+      "BabystepsLoadBalancer" : {
+         "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
+         "Properties" : {
+            "HealthCheck" : {
+               "Interval" : "30",
+               "Target" : "HTTP:80/index.html",
+               "Timeout" : "5",
+               "UnhealthyThreshold" : "5",
+               "HealthyThreshold" : "3"
+            },
+            "Subnets" : [
+               {
+                  "Ref" : "Subnet"
+               }
+            ],
+            "Instances" : [
+               {
+                  "Ref" : "EC2Instance1"
+               },
+               {
+                  "Ref" : "EC2Instance2"
+               },			   
+               {
+                  "Ref" : "EC2Instance3"
+               }
+            ],
+            "Listeners" : [
+               {
+                  "InstancePort" : "80",
+                  "Protocol" : "HTTP",
+                  "LoadBalancerPort" : "80"
+               }
+            ]
+         }
+      },						
 		"WebserverSecurityGroup": {
 			"Type": "AWS::EC2::SecurityGroup",
 			"Properties": {
@@ -115,9 +150,17 @@
 		}
 	},
 	"Outputs": {
-		"HelloWorldURL": {
+		"HelloWorldURL1": {
 			"Description": "The URL pointing to Hello World!.",
-			"Value": {"Fn::Join": ["", ["http://", {"Fn::GetAtt": ["EC2Instance", "PublicIp"]}]]}
-		}
+			"Value": {"Fn::Join": ["", ["http://", {"Fn::GetAtt": ["EC2Instance1", "PublicIp"]}]]}
+		},
+		"HelloWorldURL2": {
+			"Description": "The URL pointing to Hello World!.",
+			"Value": {"Fn::Join": ["", ["http://", {"Fn::GetAtt": ["EC2Instance2", "PublicIp"]}]]}
+		},
+		"HelloWorldURL3": {
+			"Description": "The URL pointing to Hello World!.",
+			"Value": {"Fn::Join": ["", ["http://", {"Fn::GetAtt": ["EC2Instance3", "PublicIp"]}]]}
+		}				
 	}
 }
