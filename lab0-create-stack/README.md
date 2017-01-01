@@ -5,6 +5,11 @@ Create a CloudFormation stack based on an existing template.
 ## Overview
 1. Create a CloudFormation stack based on an existing template.
 
+## Amazon CLI
+1. cd to repo eg: ~/src/github/learn-cf
+1. aws cloudformation create-stack --stack-name myteststack --template-body file://lab0-create-stack//demo.json
+
+
 ## Instructions
 1. Open [CloudFormation](https://console.aws.amazon.com/cloudformation) in AWS Management Console.
 1. Click **Create Stack** button.
