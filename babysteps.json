@@ -2,7 +2,7 @@
    "Parameters" : {
       "KeyName" : {
          "Type" : "String",
-         "Default" : "NetworkKeyPair",
+         "Default" : "blogdemo",
          "Description" : "Name of an existing EC2 key pair to enable SSH access to the new EC2 instance"
       },
       "InstanceType" : {
@@ -12,7 +12,7 @@
       },
       "SshIp" : {
          "Type" : "String",
-         "Default" : "10.0.0.0/24",
+         "Default" : "10.42.0.0/24",
          "Description" : "IP address that should have direct access through SSH"
       }
    },
@@ -206,11 +206,9 @@
                   "Fn::Join" : [
                      "\n",
                      [
-					"#!/bin/bash -ex\n",
-					"yum install -y httpd\n",
-					"cd /var/www/html\n",
-					"echo '<html><body>Hello World!</body></html>' > index.html\n",
-					"service httpd start\n"                     ]
+                        "#!/bin/bash",
+                        "apt-get install -y apache2"
+                     ]
                   ]
                }
             },
@@ -253,11 +251,8 @@
                   "Fn::Join" : [
                      "\n",
                      [
-					"#!/bin/bash -ex\n",
-					"yum install -y httpd\n",
-					"cd /var/www/html\n",
-					"echo '<html><body>Hello World!</body></html>' > index.html\n",
-					"service httpd start\n"
+                        "#!/bin/bash",
+                        "apt-get install -y apache2"
                      ]
                   ]
                }
@@ -327,10 +322,10 @@
    "Mappings" : {
       "SubnetConfig" : {
          "Public" : {
-            "CIDR" : "10.0.0.0/24"
+            "CIDR" : "10.42.0.0/24"
          },
          "VPC" : {
-            "CIDR" : "10.0.0.0/16"
+            "CIDR" : "10.42.0.0/16"
          }
       },
       "AWSRegionArch2AMI" : {
