@@ -28,7 +28,7 @@
 		}
 	},
 	"Resources": {
-		"EC2Instance": {
+		"EC2Instance1": {
 			"Type": "AWS::EC2::Instance",
 			"Properties": {
 				"ImageId": {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]},
@@ -52,6 +52,54 @@
 				]]}}
 			}
 		},
+		"EC2Instance2": {
+			"Type": "AWS::EC2::Instance",
+			"Properties": {
+				"ImageId": {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]},
+				"InstanceType": "t1.micro",
+				"NetworkInterfaces": [{
+					"AssociatePublicIpAddress": "true",
+					"DeviceIndex": "0",
+					"GroupSet": [{"Ref": "WebserverSecurityGroup"}],
+					"SubnetId": {"Ref": "Subnet"}
+				}],
+				"Tags": [{
+					"Key": "Name",
+					"Value": "hello-world"
+				}],
+				"UserData": {"Fn::Base64": {"Fn::Join": ["", [
+					"#!/bin/bash -ex\n",
+					"yum install -y httpd\n",
+					"cd /var/www/html\n",
+					"echo '<html><body>Hello World!</body></html>' > index.html\n",
+					"service httpd start\n"
+				]]}}
+			}
+		},
+		"EC2Instance3": {
+			"Type": "AWS::EC2::Instance",
+			"Properties": {
+				"ImageId": {"Fn::FindInMap": ["RegionMap", {"Ref": "AWS::Region"}, "AMI"]},
+				"InstanceType": "t1.micro",
+				"NetworkInterfaces": [{
+					"AssociatePublicIpAddress": "true",
+					"DeviceIndex": "0",
+					"GroupSet": [{"Ref": "WebserverSecurityGroup"}],
+					"SubnetId": {"Ref": "Subnet"}
+				}],
+				"Tags": [{
+					"Key": "Name",
+					"Value": "hello-world"
+				}],
+				"UserData": {"Fn::Base64": {"Fn::Join": ["", [
+					"#!/bin/bash -ex\n",
+					"yum install -y httpd\n",
+					"cd /var/www/html\n",
+					"echo '<html><body>Hello World!</body></html>' > index.html\n",
+					"service httpd start\n"
+				]]}}
+			}
+		},				
 		"WebserverSecurityGroup": {
 			"Type": "AWS::EC2::SecurityGroup",
 			"Properties": {
