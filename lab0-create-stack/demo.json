@@ -95,7 +95,7 @@
 					"#!/bin/bash -ex\n",
 					"yum install -y httpd\n",
 					"cd /var/www/html\n",
-					"echo '<html><body>Hello World!</body></html>' > index.html\n",
+					"echo '<html><body>Hello World!</body></html>' > index.html\n",				
 					"service httpd start\n"
 				]]}}
 			}
@@ -131,6 +131,11 @@
                   "InstancePort" : "80",
                   "Protocol" : "HTTP",
                   "LoadBalancerPort" : "80"
+               }
+            ],
+            "SecurityGroups" : [
+               {
+                  "Ref" : "WebserverSecurityGroup"
                }
             ]
          }
