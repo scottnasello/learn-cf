@@ -206,8 +206,11 @@
                   "Fn::Join" : [
                      "\n",
                      [
-                        "#!/bin/bash",
-                        "apt-get install -y apache2"
+					"#!/bin/bash -ex\n",
+					"yum install -y httpd\n",
+					"cd /var/www/html\n",
+					"echo '<html><body>Hello World!</body></html>' > index.html\n",
+					"service httpd start\n"
                      ]
                   ]
                }
@@ -251,8 +254,11 @@
                   "Fn::Join" : [
                      "\n",
                      [
-                        "#!/bin/bash",
-                        "apt-get install -y apache2"
+					"#!/bin/bash -ex\n",
+					"yum install -y httpd\n",
+					"cd /var/www/html\n",
+					"echo '<html><body>Hello World!</body></html>' > index.html\n",
+					"service httpd start\n"
                      ]
                   ]
                }
