@@ -330,7 +330,7 @@
       },
       "AWSRegionArch2AMI" : {
          "us-west-2" : {
-            "AMI" : "ami-1b3b462b"
+            "AMI" : "ami-1e299d7e"
          }
       }
    },
